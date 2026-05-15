@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>반정욱 - 2026 1학기 1차 영어 중간고사 재도전 | 영핏영어</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    background: linear-gradient(135deg, #f0f4ff 0%, #fff5f8 100%);
+    color: #2d2d2d;
+    line-height: 1.7;
+    padding: 16px;
+    min-height: 100vh;
+  }
+  .container { max-width: 820px; margin: 0 auto; }
+  .header {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    padding: 28px 24px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(79,70,229,0.25);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .header .brand {
+    font-size: 13px;
+    letter-spacing: 4px;
+    opacity: 0.9;
+    margin-bottom: 4px;
+  }
+  .header h1 { font-size: 22px; margin-bottom: 6px; }
+  .header p { font-size: 14px; opacity: 0.95; }
+  .header .student {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .progress-bar {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 8px;
+    z-index: 100;
+  }
+  .progress-bar .text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  .progress-bar .text strong { color: #4f46e5; }
+  .progress-track {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  .question {
+    background: white;
+    border-radius: 16px;
+    padding: 22px 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .q-num {
+    display: inline-block;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .q-points { font-size: 12px; color: #888; margin-left: 6px; }
+  .q-text {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1f2937;
+  }
+  .passage {
+    background: #f9fafb;
+    border-left: 4px solid #7c3aed;
+    padding: 14px 16px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .passage .uline { text-decoration: underline; }
+  .passage .bold { font-weight: 700; }
+  .passage .circled {
+    display: inline-block;
+    width: 18px; height: 18px;
+    border: 1.5px solid #4f46e5;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-size: 11px;
+    color: #4f46e5;
+    font-weight: 700;
+    margin: 0 2px;
+  }
+
+  .options { margin: 14px 0; }
+  .option {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+  }
+  .option:hover { border-color: #a78bfa; background: #faf7ff; }
+  .option.selected { border-color: #4f46e5; background: #eef2ff; }
+  .option.correct { border-color: #10b981; background: #ecfdf5; }
+  .option.wrong { border-color: #ef4444; background: #fef2f2; }
+  .option input[type="radio"] {
+    margin-right: 10px;
+    margin-top: 4px;
+    accent-color: #4f46e5;
+  }
+  .option-circle {
+    display: inline-block;
+    width: 22px; height: 22px;
+    border: 1.5px solid #6b7280;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .option.selected .option-circle { border-color: #4f46e5; color: #4f46e5; background: white; }
+  .option.correct .option-circle { border-color: #10b981; color: white; background: #10b981; }
+  .option.wrong .option-circle { border-color: #ef4444; color: white; background: #ef4444; }
+  .option-text { flex: 1; font-size: 14px; }
+
+  textarea, input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 60px;
+  }
+  textarea:focus, input[type="text"]:focus { outline: none; border-color: #4f46e5; }
+
+  .submit-btn {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.15s;
+  }
+  .submit-btn:hover { transform: translateY(-1px); }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .feedback {
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    display: none;
+  }
+  .feedback.show { display: block; animation: slideDown 0.3s ease; }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .feedback.correct {
+    background: #ecfdf5;
+    border-left: 4px solid #10b981;
+  }
+  .feedback.wrong {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+  }
+  .feedback .result-tag {
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  .feedback.correct .result-tag { color: #059669; }
+  .feedback.wrong .result-tag { color: #dc2626; }
+  .feedback .answer-line {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #4b5563;
+  }
+  .feedback .answer-line strong { color: #111; }
+  .explanation {
+    background: white;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #374151;
+    margin-top: 8px;
+  }
+  .explanation strong { color: #4f46e5; }
+  .explanation .tip {
+    background: #fef3c7;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-top: 8px;
+    font-size: 13px;
+    border-left: 3px solid #f59e0b;
+  }
+
+  .result-section {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    padding: 30px 24px;
+    border-radius: 18px;
+    margin-top: 24px;
+    text-align: center;
+    display: none;
+  }
+  .result-section.show { display: block; }
+  .result-section h2 { font-size: 24px; margin-bottom: 10px; }
+  .score-circle {
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    background: white;
+    color: #4f46e5;
+    border-radius: 50%;
+    line-height: 130px;
+    font-size: 38px;
+    font-weight: 900;
+    margin: 16px 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.18);
+    padding: 12px 8px;
+    border-radius: 10px;
+  }
+  .stat-card .num { font-size: 22px; font-weight: 800; }
+  .stat-card .label { font-size: 12px; opacity: 0.9; }
+
+  .kakao-section {
+    background: white;
+    color: #2d2d2d;
+    padding: 18px;
+    border-radius: 14px;
+    margin-top: 18px;
+    text-align: left;
+  }
+  .kakao-section h3 { color: #4f46e5; font-size: 16px; margin-bottom: 10px; }
+  .kakao-text {
+    background: #fef9c3;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    white-space: pre-wrap;
+    font-family: 'Malgun Gothic', monospace;
+    max-height: 280px;
+    overflow-y: auto;
+    border: 1.5px solid #fde047;
+  }
+  .copy-btn {
+    background: #fee500;
+    color: #3c1e1e;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 12px;
+    transition: transform 0.15s;
+  }
+  .copy-btn:hover { transform: translateY(-1px); }
+  .copy-btn.copied { background: #10b981; color: white; }
+
+  .final-submit {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .grade-btn {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: white;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .grade-btn:hover { transform: translateY(-2px); }
+
+  .legend {
+    background: #fff7ed;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #92400e;
+    line-height: 1.7;
+  }
+  .footer {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 12px;
+    margin: 24px 0 12px;
+  }
+
+  /* 서답형 입력 */
+  .saw-answer-section {
+    background: #faf5ff;
+    border: 1.5px dashed #c4b5fd;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+  }
+  .saw-label {
+    font-size: 12px;
+    color: #6d28d9;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .self-check {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .self-check button {
+    flex: 1;
+    padding: 8px;
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .self-check button.active-ok { background: #10b981; color: white; border-color: #10b981; }
+  .self-check button.active-no { background: #ef4444; color: white; border-color: #ef4444; }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 18px; }
+    .stats { grid-template-columns: repeat(3, 1fr); }
+    .stat-card .num { font-size: 18px; }
+    .passage { font-size: 13px; }
+    .option-text { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="brand">E N G F I T · 영 핏 영 어</div>
+    <h1>2026학년도 1학기 1차 정기시험 영어</h1>
+    <p>2학년 영어 · 호남삼육중학교 · 총 26문항(100점)</p>
+    <span class="student">반정욱 학생 복습용</span>
+  </div>
+
+  <div class="legend">
+    📝 <strong>이용 방법</strong><br>
+    1. 각 문항의 답을 선택하고 <b>"답 확인"</b> 버튼을 누르면 정답·해설이 바로 나와요.<br>
+    2. 모든 문제를 푼 뒤 맨 아래 <b>"점수 확인하기"</b>를 누르면 결과가 정리됩니다.<br>
+    3. 결과를 <b>카톡 복사</b> 버튼으로 복사해서 선생님께 보내주세요!
+  </div>
+
+  <div class="progress-bar">
+    <div class="text">진행률 <strong><span id="progressText">0 / 29</span></strong></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <!-- 1번 -->
+  <div class="question" data-qnum="1" data-type="mc" data-answer="3" data-points="3">
+    <span class="q-num">Q 1</span><span class="q-points">[3점]</span>
+    <p class="q-text">다음 대화문의 빈칸에 들어갈 표현으로 가장 적절하지 <u>않은</u> 것은?</p>
+    <div class="passage">
+      G: I'm learning to play the guitar these days. My friend Minji is teaching me.<br>
+      B: Who is Minji?<br>
+      G: She is the guitarist in the school band.<br>
+      B: Cool! Maybe you can perform in the future.<br>
+      G: Yes, Actually, I want to perform at the school festival.<br>
+      B: Sounds great. _________________
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">You can do it!</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">Keep it up!</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">Never mind!</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">Don't give up!</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">I believe in you!</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>③ Never mind!</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        G가 학교 축제에서 공연하고 싶다고 말했고, B는 "Sounds great."이라며 긍정적인 반응을 보였어요. 빈칸에는 <strong>응원하는 표현</strong>이 와야 자연스러워요.<br><br>
+        ① You can do it! (넌 할 수 있어!) → 응원 ✅<br>
+        ② Keep it up! (계속 해봐!) → 응원 ✅<br>
+        ③ Never mind! (신경 쓰지 마!) → 상대를 위로하거나 "괜찮아"라고 할 때 쓰는 표현이라 응원과는 거리가 멀어요 ❌<br>
+        ④ Don't give up! (포기하지 마!) → 응원 ✅<br>
+        ⑤ I believe in you! (난 너를 믿어!) → 응원 ✅
+        <div class="tip">📌 <b>Tip:</b> "Never mind"는 "잊어버려, 신경 쓰지 마" 라는 뜻으로, 누가 사과하거나 부탁할 때 "괜찮아"라고 답할 때 자주 써요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2번 -->
+  <div class="question" data-qnum="2" data-type="mc" data-answer="2" data-points="3.4">
+    <span class="q-num">Q 2</span><span class="q-points">[3.4점]</span>
+    <p class="q-text">다음 글의 (A), (B), (C)에 문맥상 들어갈 단어로 가장 적절한 것은?</p>
+    <div class="passage">
+      In daily life, we often <u>__(A)__</u> new things with a bit of worry. For example, when you try a new food, you may be <u>__(B)__</u> and take a small bite first to check the taste before eating more. Also, some students, in a class president election, <u>__(C)__</u> class president even though they feel nervous. They prepare seriously and think about what they will say. These small actions are helpful for handling new experiences in a smart way.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">give up — excited — wait for</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">view — cautious — run for</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">give up — careful — support</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">miss — excited — maintain</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">try — careful — find</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>② view — cautious — run for</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        (A) <strong>view</strong> new things with a bit of worry → "새로운 것들을 약간의 걱정으로 <b>바라본다</b>"<br>
+        (B) you may be <strong>cautious</strong> and take a small bite → "<b>신중해서</b> 한입 먼저 먹어본다"<br>
+        (C) students <strong>run for</strong> class president → "반장 선거에 <b>출마한다</b>"
+        <div class="tip">📌 <b>Tip:</b> <code>run for + 직책</code> = "~에 출마하다". <code>cautious</code>는 "조심스러운", <code>careful</code>과 비슷하지만 위험·실수를 피하려는 뉘앙스가 더 강해요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3번 -->
+  <div class="question" data-qnum="3" data-type="mc" data-answer="5" data-points="3.3">
+    <span class="q-num">Q 3</span><span class="q-points">[3.3점]</span>
+    <p class="q-text">위 글의 밑줄 친 (가) <u>clock</u>의 문맥상 의미로 가장 적절한 것은?</p>
+    <div class="passage">
+      <b>Have a regular sleep pattern</b><br>
+      Your body has a "<b>(가) clock</b>." The body clock tells you <u>when</u> to wake up and sleep. For example, in the morning, your body starts to feel ⓑ. At night, your body starts to feel sleepy. Listen to your body clock and sleep regularly. You will feel healthier.<br><br>
+      <b>Be careful about caffeine</b><br>
+      Caffeine can cause sleep problems. Do you know that <u>even</u> chocolate has caffeine? Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks. So, be careful!
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">the device that plays music to help people focus or relax</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">the sound from a machine that helps your sleep and wake times</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">the balance in your body that controls your feelings of the day</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">the device that shows time to help people with their daily routines</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">the natural process in your body that controls your sleep and wake times</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>⑤ the natural process in your body that controls your sleep and wake times</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        본문의 <b>"body clock"</b>은 우리 몸 안에서 <b>잠들고 깨어나는 시간을 조절하는 자연적인 시스템</b>을 의미해요. 우리말로는 "생체 시계"라고 부르죠.<br><br>
+        ① 음악 재생 기기 ❌<br>
+        ② 기계에서 나오는 소리 ❌<br>
+        ③ 하루의 감정을 조절하는 균형 ❌ (수면/기상이 아님)<br>
+        ④ 시간을 보여주는 장치 ❌ (실제 시계가 아님)<br>
+        ⑤ 수면·기상을 조절하는 몸 속 자연 과정 ✅
+        <div class="tip">📌 <b>Tip:</b> 영영 정의 문제는 본문에서 그 단어가 어떤 기능을 하는지 확인하면 답이 보여요. 본문에서 "tells you when to wake up and sleep" → 수면·기상 조절!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4번 -->
+  <div class="question" data-qnum="4" data-type="mc" data-answer="2" data-points="3.6">
+    <span class="q-num">Q 4</span><span class="q-points">[3.6점]</span>
+    <p class="q-text">위 글 ⓐ~ⓔ와 관련하여 옳은 &lt;보기&gt;의 설명의 개수는?</p>
+    <div class="passage">
+      ▸ ⓐ는 She was walking home <b>when</b> it started to rain.의 밑줄 친 부분과 어법상 쓰임이 같다.<br>
+      ▸ ⓑ에는 alive가 들어가기에 적절하다.<br>
+      ▸ ⓒ는 You will feel like a healthier person으로 바꿔 쓸 수 있다.<br>
+      ▸ 글의 흐름상 ⓓ의 영영풀이는 'flat and smooth, without rough parts'이다.<br>
+      ▸ ⓔ는 Caffeine contains many foods and drinks로 바꿔 쓸 수 있다.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">1개</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">2개</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">3개</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">4개</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">5개</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>② 2개</strong> (옳은 것: ⓐ, ⓒ)</div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        ▸ <b>ⓐ when</b>: 본문에서 "tells you when to wake up" → 의문사 when (간접의문문). 보기 문장 "when it started to rain"의 when은 시간 부사절 접속사. 🤔 <b>주의:</b> 학교 채점 기준상 "맞다"로 채점됨 (둘 다 시간 관련 의미). ✅<br>
+        ▸ <b>ⓑ</b>: 빈칸엔 "아침에 몸이 어떻게 느끼는지"가 와야 함 → <b>awake/energetic</b>이 자연스러움. alive(살아있는)는 어색. ❌<br>
+        ▸ <b>ⓒ</b>: "You will feel healthier" → "feel + 형용사" = "feel like + 명사"로 변환 가능. "feel like a healthier person" 가능. ✅<br>
+        ▸ <b>ⓓ even</b>: 본문에선 "~조차도"의 의미. 'flat and smooth(평평하고 매끄러운)'은 <b>형용사 even</b>의 뜻이라 다름. ❌<br>
+        ▸ <b>ⓔ</b>: "Caffeine <b>hides in</b> foods" = 카페인이 음식 속에 숨어있다. "Caffeine <b>contains</b> foods"는 "카페인이 음식을 포함한다"로 의미가 뒤바뀜. ❌
+        <div class="tip">📌 <b>Tip:</b> A hide in B = A가 B 안에 숨다 / A contain B = A가 B를 포함하다 → 주어·목적어 위치가 다르니 헷갈리지 말기!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5번 -->
+  <div class="question" data-qnum="5" data-type="mc" data-answer="3" data-points="3.5">
+    <span class="q-num">Q 5</span><span class="q-points">[3.5점]</span>
+    <p class="q-text">위 글의 밑줄 친 ⓐ~ⓔ 중 어법상 옳은 것은?</p>
+    <div class="passage">
+      ⓐ Did you know that animals have interesting and unique sleep habits in <b>its</b> daily life? Animals have special sleep habits that support their survival in their environments. ⓑ Koalas sleep for almost 20 hours a day because they eat eucalyptus leaves <b>which does</b> not give much energy to them. Dolphins have a special way that they use for sleep in the ocean. They cannot sleep like people because they need air to breathe all the time. ⓒ When dolphins sleep, one side of their brain rests, and the other side continues its work. ⓓ When one side of the brain works, dolphins can swim slowly and watch for <b>dangerous</b> around them. After a while, the brain changes its role, and the other side rests for some time. This helps dolphins and supports their safety in the water. ⓔ Animals have different sleeping ways, and <b>each ways meet</b> their needs in different environments. Isn't that really cool and interesting?
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">ⓐ</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">ⓑ</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">ⓒ</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">ⓓ</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">ⓔ</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>③ ⓒ</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        ⓐ animals(복수) → 소유격은 <b>their</b>이어야 함. its(단수)는 어법 오류 ❌<br>
+        ⓑ leaves(복수)를 받는 관계대명사는 which / 동사도 복수형 → <b>which do not give</b>가 맞음 ❌<br>
+        ⓒ 주어 one side는 단수, rests(맞음) / continues(맞음) → 어법 OK ✅<br>
+        ⓓ <b>dangerous</b>는 형용사 → "위험한 것들을 살피다"라면 <b>dangers</b>(명사) 또는 <b>dangerous things</b>로 써야 함 ❌<br>
+        ⓔ <b>each + 단수 명사 + 단수 동사</b> 원칙 → "each <b>way meets</b>"가 맞음 ❌
+        <div class="tip">📌 <b>Tip:</b> <code>each / every</code> 다음엔 항상 단수! "each ways meet" 같은 표현은 자주 함정으로 등장해요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6번 -->
+  <div class="question" data-qnum="6" data-type="mc" data-answer="2" data-points="3.2">
+    <span class="q-num">Q 6</span><span class="q-points">[3.2점]</span>
+    <p class="q-text">위 글의 내용과 일치하지 <u>않는</u> 것은? (5번 본문)</p>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">동물들은 생존을 돕는 특별한 수면 습관을 갖고 있다.</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">코알라가 먹는 유칼립투스 잎은 사람들에게 많은 에너지를 주지 못한다.</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">돌고래는 바다에서 잠을 자기 위해 사용하는 특별한 방법이 있다.</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">돌고래는 잠을 잘 때 두뇌를 한쪽씩 번갈아가며 한쪽은 쉬고 다른 쪽은 계속 활동한다.</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">돌고래가 뇌의 역할을 바꾸어 다른 쪽을 쉬게 하는 방식은 물속에서 그들의 안전을 돕는다.</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>② 코알라가 먹는 유칼립투스 잎은 사람들에게 많은 에너지를 주지 못한다.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        본문: "Koalas sleep for almost 20 hours a day because they eat eucalyptus leaves which does not give much energy <b>to them</b>." → <b>to them = 코알라들에게</b>, "사람들에게"가 아니에요!<br>
+        나머지는 모두 본문과 일치해요.
+        <div class="tip">📌 <b>Tip:</b> "to them"의 대명사 they/them이 누구를 가리키는지 항상 앞 문장에서 확인! 여기선 가장 가까운 명사 koalas를 가리켜요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7번 -->
+  <div class="question" data-qnum="7" data-type="mc" data-answer="4" data-points="3">
+    <span class="q-num">Q 7</span><span class="q-points">[3점]</span>
+    <p class="q-text">다음 중 대화의 내용과 일치하는 것은?</p>
+    <div class="passage">
+      Jim: Hey, what time is it now?<br>
+      Kate: It's a quarter past three. Do you have something to do?<br>
+      Jim: Yes, I have a meeting at half past four. May I leave early to prepare?<br>
+      Kate: Sure, that's fine. But can you finish your homework before you go?<br>
+      Jim: I'll try my best. I think I can finish by a quarter to four.<br>
+      Kate: That sounds good. Do you need any help with your work?<br>
+      Jim: Actually, yes. Can you check my report for a minute?<br>
+      Kate: Of course. I can look at it now since my class starts at a quarter past four.<br>
+      Jim: Thanks! Also, may I borrow your notes after your class?<br>
+      Kate: No problem. Just make sure to return them.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">지금 시각은 3시 15분이고, Kate는 40분 뒤에 회의가 있다.</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">Kate는 Jim과 함께 회의 준비를 위해 일찍 떠난다.</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">Jim은 4시 15분까지 숙제를 끝낼 수 있다고 말했다.</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">Kate는 수업이 시작하기 전에 Jim의 보고서를 확인해 주기로 했다.</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">Jim은 자신의 공책을 Kate에게 빌려주기로 했다.</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>④ Kate는 수업이 시작하기 전에 Jim의 보고서를 확인해 주기로 했다.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        ① 회의는 <b>Jim</b>의 것이지 Kate의 것이 아님 ❌<br>
+        ② 일찍 떠나는 건 <b>Jim</b>임 ❌<br>
+        ③ Jim은 "by a quarter <b>to</b> four" → <b>3시 45분</b>까지 끝낸다고 함 ❌<br>
+        ④ Kate: "I can look at it now since my class starts at a quarter past four." → 수업(4:15) 시작 전에 봐주기로 함 ✅<br>
+        ⑤ 공책을 빌려주는 건 <b>Kate</b>임 ❌
+        <div class="tip">📌 <b>시간 표현 정리:</b><br>
+        • a quarter <b>past</b> three = 3시 15분<br>
+        • a quarter <b>to</b> four = 3시 45분 (4시 15분 전)<br>
+        • half past four = 4시 30분</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8번 -->
+  <div class="question" data-qnum="8" data-type="mc" data-answer="2" data-points="3">
+    <span class="q-num">Q 8</span><span class="q-points">[3점]</span>
+    <p class="q-text">다음 중 빈칸 (A)에 들어갈 표현으로 가장 적절한 것은?</p>
+    <div class="passage">
+      __________(A)__________ your schedule every single day, you will achieve your goals more efficiently.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">Carefully to plan</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">If you carefully plan</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">Which you carefully plan</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">Unless you carefully plan</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">If you would carefully plan</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>② If you carefully plan</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        뒤 문장이 "you will achieve…"로 <b>미래시제 결과</b>가 나오므로, 앞에는 <b>현재시제 조건절</b>이 와야 해요.<br><br>
+        ① Carefully to plan → 동명사/부정사 구조로 어색 ❌<br>
+        ② <b>If you carefully plan</b> → "만약 매일 신중히 계획한다면" ✅<br>
+        ③ Which → 관계대명사로는 문장이 안 됨 ❌<br>
+        ④ Unless = "~하지 않는다면" → 의미상 반대 ❌<br>
+        ⑤ would는 가정법 형태라 사실적 조건과 안 어울림 ❌
+        <div class="tip">📌 <b>조건문 공식:</b> <code>If + 주어 + 현재동사, 주어 + will + 동사원형</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9번 -->
+  <div class="question" data-qnum="9" data-type="mc" data-answer="4" data-points="3.7">
+    <span class="q-num">Q 9</span><span class="q-points">[3.7점]</span>
+    <p class="q-text">다음 중 어법상 <u>어색한</u> 문장은?</p>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">Summer is the best season to visit Busan.</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">I didn't have a chance to check my email.</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">The children were excited because they finally found a large field to play in.</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">She was looking for a reliable person to talk.</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">In a crisis, people look for a strong leader to depend on during difficult times.</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>④ She was looking for a reliable person to talk.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        ④번은 <b>전치사 to</b>가 빠진 문장이에요. <b>"talk to someone"</b>(누군가에게 말하다)이라는 표현이라, 부정사로 만들 때도 to를 살려야 해요.<br>
+        → <b>She was looking for a reliable person <u>to talk to</u>.</b><br><br>
+        ① season <b>to visit</b> ✅ ("방문할 계절")<br>
+        ② chance <b>to check</b> ✅ ("확인할 기회")<br>
+        ③ field <b>to play in</b> ✅ ("play in a field"에서 in 보존)<br>
+        ⑤ leader <b>to depend on</b> ✅ ("depend on someone")
+        <div class="tip">📌 <b>핵심 규칙:</b> 부정사가 명사를 수식할 때, 원래 문장에 쓰인 <b>전치사를 빠뜨리지 말 것</b>!<br>
+        • a pen <b>to write with</b> (write with a pen)<br>
+        • a chair <b>to sit on</b> (sit on a chair)<br>
+        • a friend <b>to talk to</b> (talk to a friend)<br><br>
+        💪 <b>정욱이 이거 다시 한 번 외워두기!</b> 이전에 ①을 골랐는데, ① Summer is the best season to visit Busan은 "visit Busan"이 그대로 살아있어서 어법상 완전히 맞아요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10번 -->
+  <div class="question" data-qnum="10" data-type="mc" data-answer="3" data-points="3.1">
+    <span class="q-num">Q 10</span><span class="q-points">[3.1점]</span>
+    <p class="q-text">다음 글을 쓴 목적으로 가장 적절한 것은?</p>
+    <div class="passage">
+      Welcome back to school. How do you feel today? Did you sleep well last night? Sleeping well can give you energy for the new school year. Now, check your sleep habits with the list.<br>
+      I...<br>
+      ☐ go to bed at different times<br>
+      ☐ drink a lot of energy drinks<br>
+      ☐ use my smartphone before sleeping<br>
+      ☐ sleep less than 8 hours a day<br>
+      ☐ eat before bedtime<br>
+      ☐ take long naps<br>
+      How many habits did you check? These habits may cause sleep problems. Do you think you need a change? Let's find out what to do.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">to help students check their sleep habits and stay awake</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">to help students get ready for the new school year</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">to help students check their sleep habits and sleep better</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">to show that bad sleep habits can lower study quality</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">to find out the reasons for bad sleep and its results</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>③ to help students check their sleep habits and sleep better</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        본문은 학생들에게 수면 습관 체크리스트를 주고, 마지막에 <b>"Do you think you need a change? Let's find out what to do."</b>라고 말해요. 즉, <b>수면 습관을 점검하고 더 잘 자도록 돕는 것</b>이 목적이에요.<br><br>
+        ① stay awake (깨어 있게) → 글의 목적과 반대 ❌<br>
+        ② 새 학년 준비는 일부 언급이지만, 핵심은 아님 ❌<br>
+        ③ 수면 습관 점검 + 더 잘 자기 ✅<br>
+        ④ 학습의 질 저하는 본문에 없음 ❌<br>
+        ⑤ 원인·결과 분석이 아닌 점검이 목적 ❌
+      </div>
+    </div>
+  </div>
+
+  <!-- 11번 -->
+  <div class="question" data-qnum="11" data-type="mc" data-answer="2" data-points="3.1">
+    <span class="q-num">Q 11</span><span class="q-points">[3.1점]</span>
+    <p class="q-text">다음 글의 내용과 일치하지 <u>않는</u> 것은?</p>
+    <div class="passage">
+      <b>Move your body actively.</b><br>
+      Exercise during the day. Then, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime. If you finish it right before bedtime, your body may feel too awake. You may not fall asleep easily.<br><br>
+      <b>Stop using your smartphone before bedtime.</b><br>
+      If you use your smartphone late at night, your brain will stay active. The blue light from the phone will also tell your brain, "Hey, don't sleep yet." To sleep well, don't use your phone right before bedtime.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">Being physically tired helps you fall asleep with ease.</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">Exercise has little effect on your being awake at bedtime.</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">Finishing exercise a few hours before bedtime is recommended.</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">The blue light from the smartphone affects the brain.</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">You can sleep well by not using the smartphone before bedtime.</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>② Exercise has little effect on your being awake at bedtime.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        본문: "If you finish it right before bedtime, your body may feel too awake." → 자기 전 운동은 잠 못 들게 함, 즉 <b>운동은 awake에 영향을 미침</b>.<br>
+        ② "Exercise has <b>little effect</b>(거의 영향 없음)" → 본문과 반대 ❌<br>
+        나머지는 모두 본문과 일치.
+        <div class="tip">📌 <b>Tip:</b> <code>little effect</code> = 영향이 거의 없다 / <code>a little effect</code> = 약간의 영향이 있다 (관사 a 하나로 의미 반대!)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12번 -->
+  <div class="question" data-qnum="12" data-type="mc" data-answer="2" data-points="3.2">
+    <span class="q-num">Q 12</span><span class="q-points">[3.2점]</span>
+    <p class="q-text">다음 (A), (B) 단어의 영영풀이로 바르게 짝지어진 것은?</p>
+    <div class="passage">
+      ▸ He (A) <b>piles</b> the boxes in the corner of the room.<br>
+      ▸ A rainbow will (B) <b>appear</b> after the rain.<br><br>
+      &lt;보기&gt;<br>
+      ⓐ to put a number of things on top of each other<br>
+      ⓑ to become impossible to see any longer<br>
+      ⓒ to throw or drop things over a wide area<br>
+      ⓓ to have something inside or include something<br>
+      ⓔ to start to be seen, or to exist in a place
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">(A) ⓐ — (B) ⓒ</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">(A) ⓐ — (B) ⓔ</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">(A) ⓓ — (B) ⓒ</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">(A) ⓓ — (B) ⓐ</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">(A) ⓔ — (B) ⓑ</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>② (A) ⓐ — (B) ⓔ</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        (A) <b>pile</b> = 쌓다 → "to put a number of things on top of each other" (여러 개를 위에 쌓다) ⓐ ✅<br>
+        (B) <b>appear</b> = 나타나다 → "to start to be seen, or to exist in a place" (보이기 시작하다) ⓔ ✅
+      </div>
+    </div>
+  </div>
+
+  <!-- 13번 -->
+  <div class="question" data-qnum="13" data-type="mc" data-answer="4" data-points="3.5">
+    <span class="q-num">Q 13</span><span class="q-points">[3.5점]</span>
+    <p class="q-text">다음 중 위 글의 (가)와 어법상 쓰임이 같은 것은?</p>
+    <div class="passage">
+      Halla and Olle are two dolphins in an aquarium in Jeju-do. The latest project by Dolphin Lovers are to teach survival skills for them and return them to the sea. Luckily, Inho got an opportunity <b>(가) to take part in</b> the training program...
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text"><u>To learn</u> a new language takes a lot of time.</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">I really want <u>to achieve</u> my dream someday.</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">We agreed <u>to meet</u> after school and work on the project together.</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">She is the first person <u>to arrive</u> at the classroom every morning.</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">He plans <u>to visit</u> his grandparents during the summer vacation.</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>④ She is the first person to arrive at the classroom every morning.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        본문의 <b>(가) to take part in</b>은 앞 명사 <b>opportunity</b>를 수식하는 <b>형용사적 용법</b>의 to부정사예요.<br><br>
+        ① <u>To learn</u> = 주어 자리 → <b>명사적 용법</b> ❌<br>
+        ② <u>to achieve</u> = want의 목적어 → <b>명사적 용법</b> ❌<br>
+        ③ <u>to meet</u> = agreed의 목적어 → <b>명사적 용법</b> ❌<br>
+        ④ <u>to arrive</u> = 앞 명사 <b>person</b>을 수식 → <b>형용사적 용법</b> ✅<br>
+        ⑤ <u>to visit</u> = plans의 목적어 → <b>명사적 용법</b> ❌
+        <div class="tip">📌 <b>to부정사 3대 용법:</b><br>
+        • 명사적: 주어/목적어/보어 ("~하는 것")<br>
+        • <b>형용사적: 앞 명사 수식</b> ("~할 명사")<br>
+        • 부사적: 동사/형용사 수식 ("~하기 위해서, ~해서")</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14번 -->
+  <div class="question" data-qnum="14" data-type="mc" data-answer="2" data-points="3.5">
+    <span class="q-num">Q 14</span><span class="q-points">[3.5점]</span>
+    <p class="q-text">위 글과 관련하여 옳은 &lt;보기&gt;의 설명의 개수는?</p>
+    <div class="passage">
+      ▸ ⓐ를 어법상 바르게 고치면 "The latest project by Dolphin Lovers is to teach them for survival skills and return to them to the sea."이다.<br>
+      ▸ 인호는 돌고래들에게 심부름을 하는 기술을 가르쳤다.<br>
+      ▸ ⓑ는 He is trying to fix <b>that</b> mistake he made.의 밑줄 친 부분과 어법상 쓰임이 같다.<br>
+      ▸ ⓒ를 어법상 바르게 고치면 happy and sadness이다.<br>
+      ▸ (나)는 survival skills를 가리킨다.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">1개</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">2개</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">3개</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">4개</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">5개</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>② 2개</strong> (옳은 것: ⓐ 수정, (나) 지시)</div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        ▸ <b>ⓐ</b> 원문: "project ... <b>are</b>" → 주어 project(단수)이므로 <b>is</b>로 고치는 부분이 맞음. 학교 채점상 이 항목은 OK로 처리됨. ✅<br>
+        ▸ <b>인호</b>: "He didn't do much—just <b>ran errands</b>" → 인호가 심부름을 했지, 가르친 것이 아님 ❌<br>
+        ▸ <b>ⓑ that</b>: 본문에서는 <b>명사절 접속사 that</b> ("~라는 것"). 보기 문장 "that mistake"의 that은 <b>지시형용사</b> ("그") → 쓰임 다름 ❌<br>
+        ▸ <b>ⓒ</b>: 본문 "feel both happily and sad"는 <b>both A and B 병렬 구조</b>라 같은 품사여야 함 → "happy and sad"가 맞고, "happy and sadness"(형용사+명사)는 또 어색 ❌<br>
+        ▸ <b>(나) these skills</b> = 앞에 언급된 <b>survival skills</b> 가리킴 ✅
+        <div class="tip">📌 <b>that의 두 가지 쓰임 구별법:</b><br>
+        • 명사절 접속사: that 다음에 완전한 문장 ("I know <b>that</b> she is kind.")<br>
+        • 지시형용사: that + 명사 ("Look at <b>that</b> dog!")</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15번 -->
+  <div class="question" data-qnum="15" data-type="mc" data-answer="5" data-points="3.4">
+    <span class="q-num">Q 15</span><span class="q-points">[3.4점]</span>
+    <p class="q-text">다음 중 밑줄 친 단어가 위 글의 (A), (B)와 문맥상 의미가 같은 것은?</p>
+    <div class="passage">
+      본문 (A) <b>hard</b>: "Halla and Olle will work <b>hard</b> to learn" → "열심히"<br>
+      본문 (B) <b>miss</b>: "he won't be able to see them anymore. He knows he'll <b>miss</b> them." → "그리워하다"
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">The wind blew (A) <u>hard</u> last night with a scary sound. <small>(강하게/세게)</small></span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">Because of the heat, the cement on the wall slowly became (A) <u>hard</u>. <small>(단단한)</small></span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">I might (B) <u>miss</u> the class because I have to visit the hospital. <small>(결석하다)</small></span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">The key player of the team (B) <u>miss</u>ed the goal in the final game. <small>(놓치다)</small></span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">We (B) <u>miss</u> the days that we played hide and seek with friends. <small>(그리워하다)</small></span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>⑤ We miss the days that we played hide and seek with friends.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        본문 (B) miss = "그리워하다"와 같은 의미를 가진 것은 ⑤번. "친구와 숨바꼭질하던 그 시절을 그리워하다" → 정확히 같은 뜻!<br>
+        ①은 부사(세게), ②는 형용사(단단한), ③은 동사(빠지다/결석), ④는 동사(놓치다)로 의미 모두 다름.
+        <div class="tip">📌 <b>miss의 다양한 의미:</b> ① 놓치다(버스 등) ② 빠지다/결석하다 ③ 그리워하다 ④ 그리움을 알아채지 못하다</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16번 -->
+  <div class="question" data-qnum="16" data-type="mc" data-answer="5" data-points="3.7">
+    <span class="q-num">Q 16</span><span class="q-points">[3.7점]</span>
+    <p class="q-text">다음 중 어법상 <u>어색한</u> 문장의 개수는?</p>
+    <div class="passage">
+      ▸ The girl <b>who are</b> standing next to the piano is my younger sister.<br>
+      ▸ I have a friend <b>which</b> lives in London and speaks three languages fluently.<br>
+      ▸ The movie <b>who</b> we watched together last night was very touching.<br>
+      ▸ The man <b>who he is</b> wearing a red cap is a famous baseball player.<br>
+      ▸ People <b>who enjoys</b> extreme sports often look for new and dangerous challenges.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">1개</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">2개</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">3개</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">4개</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">5개</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>⑤ 5개</strong> (모두 어색)</div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        ▸ "The girl <b>who are</b>" → 선행사 girl(단수) → <b>who is</b> ❌<br>
+        ▸ "a friend <b>which</b>" → 사람 선행사엔 <b>who</b> ❌<br>
+        ▸ "The movie <b>who</b>" → 사물 선행사엔 <b>which/that</b> ❌<br>
+        ▸ "The man <b>who he is</b>" → 주격 관계대명사 who 뒤엔 he 불필요 → <b>who is wearing</b> ❌<br>
+        ▸ "People <b>who enjoys</b>" → People(복수) → <b>who enjoy</b> ❌<br><br>
+        <b>→ 5개 모두 어법 오류!</b>
+        <div class="tip">📌 <b>관계대명사 핵심 규칙:</b><br>
+        ① 선행사가 사람이면 <b>who/whom/whose</b>, 사물·동물이면 <b>which</b><br>
+        ② 주격 관계대명사 뒤 동사는 <b>선행사 수에 일치</b><br>
+        ③ 주격 관계대명사 뒤에 또 다른 주어가 오면 안 됨<br><br>
+        💪 <b>정욱이 노트:</b> 이 문제 ③ 3개로 했는데, 헷갈리는 5문장 다시 한 번 천천히 분석해보기!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17번 -->
+  <div class="question" data-qnum="17" data-type="mc" data-answer="4" data-points="3.4">
+    <span class="q-num">Q 17</span><span class="q-points">[3.4점]</span>
+    <p class="q-text">다음 ⓐ~ⓔ 중 문맥상 낱말의 쓰임이 가장 적절하지 <u>않은</u> 것은?</p>
+    <div class="passage">
+      When people have problems, they often try to ⓐ<b>add</b> new habits to their daily lives to handle their stress. For example, they may start writing a diary to better understand their emotions. This action can be helpful for them to ⓑ<b>get better</b> little by little. However, ⓒ<b>realizing</b> the thing that is really causing the problem is important. After that, they can ⓓ<b>skip</b> their mistakes and use them so they do not make the same mistakes again. In the end, they will ⓔ<b>recover</b> and feel stronger.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">ⓐ add</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">ⓑ get better</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">ⓒ realizing</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">ⓓ skip</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">ⓔ recover</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>④ ⓓ skip</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        문맥: "그것(원인)을 깨달은 후, 사람들은 자기 실수를 ___ 그리고 그것을 이용해서 같은 실수를 또 하지 않는다."<br>
+        → 실수를 <b>"이용한다"</b>고 했으니, "건너뛰다(skip)"는 어색해요. <b>face(직시하다), recognize(인식하다), accept(받아들이다)</b>가 자연스러워요.<br><br>
+        ⓐ add new habits = 새 습관 추가 ✅<br>
+        ⓑ get better = 점점 나아지다 ✅<br>
+        ⓒ realizing = 깨닫는 것 ✅<br>
+        ⓓ <b>skip = 건너뛰다 → 흐름에 어긋남</b> ❌<br>
+        ⓔ recover = 회복하다 ✅
+      </div>
+    </div>
+  </div>
+
+  <!-- 18번 -->
+  <div class="question" data-qnum="18" data-type="mc" data-answer="1" data-points="3.1">
+    <span class="q-num">Q 18</span><span class="q-points">[3.1점]</span>
+    <p class="q-text">다음 중 위 글의 내용과 일치하는 것은?</p>
+    <div class="passage">
+      Bobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who teaches Bobby how to walk. ... Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed. ... Time passed. One day, Bobby's dad looked very sad. He told Bobby, "Bob fell ill. He is in a hospital which is far from here." ... "He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better." Bob came back home after a few months. He just laid in bed without talking or moving. ... Suddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">Bobby라는 이름은 할아버지 Bob에게서 따온 것이다.</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">Bobby는 할아버지가 병원에 입원해 계시는 동안 매일 병문안을 갔다.</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">할아버지는 퇴원 후 즉시 예전처럼 자유롭게 대화하고 걸을 수 있게 되었다.</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">코끼리 블록은 탑의 가장 아랫부분에 놓아야 하는 가장 크고 무거운 블록이다.</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">Bobby는 할아버지가 다시 재채기하는 모습을 보고 병세가 악화되었음을 직감했다.</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>① Bobby라는 이름은 할아버지 Bob에게서 따온 것이다.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        본문 첫 문장: "Bobby got his name from his grandfather, Bob." → 정확히 일치 ✅<br><br>
+        ② 본문에 매일 병문안 갔다는 언급 없음 ❌<br>
+        ③ "Slowly, Bob began to talk a little and move his fingers" → 천천히 조금씩 ❌<br>
+        ④ 코끼리 블록은 마지막에 <b>꼭대기</b>에 놓는 블록 ❌<br>
+        ⑤ 재채기 소리 듣고 <b>회복할 것</b>임을 직감 (악화 아님) ❌
+      </div>
+    </div>
+  </div>
+
+  <!-- 19번 -->
+  <div class="question" data-qnum="19" data-type="mc" data-answer="4" data-points="3.1">
+    <span class="q-num">Q 19</span><span class="q-points">[3.1점]</span>
+    <p class="q-text">다음 중 위 글의 정보를 바탕으로 답할 수 <u>없는</u> 질문은?</p>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">Who taught Bobby his first steps?</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">Why did the wooden tower collapse when they were playing?</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">How long did Bob stay in the hospital before returning home?</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">What was the cause of Bob's illness?</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">Which body parts was Bob unable to move according to Bobby's mother?</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>④ What was the cause of Bob's illness?</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        ① 누가 Bobby에게 첫 걸음을 가르쳤나? → Bob (할아버지) ✅<br>
+        ② 왜 탑이 무너졌나? → Bob이 재채기해서 ✅<br>
+        ③ 병원에 얼마나 있었나? → "after a few months" 몇 달 ✅<br>
+        ④ <b>병의 원인은?</b> → 본문에 명시되어 있지 않음 ❌ → 답할 수 없음!<br>
+        ⑤ 어느 부위를 못 움직였나? → arms and legs ✅
+      </div>
+    </div>
+  </div>
+
+  <!-- 20번 -->
+  <div class="question" data-qnum="20" data-type="mc" data-answer="2" data-points="3">
+    <span class="q-num">Q 20</span><span class="q-points">[3점]</span>
+    <p class="q-text">위 글의 전체 분위기 변화로 가장 적절한 것은?</p>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">joyful → mysterious → gloomy and hopeless</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">playful and warm → sorrowful → hopeful</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">calm and peaceful → aggressive → relieved</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">lonely and quiet → frustrating → mysterious</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">humorous and light → terrifying → lonely</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>② playful and warm → sorrowful → hopeful</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        ▸ <b>초반</b>: Bobby와 할아버지가 놀고 웃는 따뜻한 장면 → <b>playful and warm</b><br>
+        ▸ <b>중반</b>: 할아버지가 병들어 슬픈 분위기 → <b>sorrowful</b><br>
+        ▸ <b>후반</b>: 회복할 것이라는 희망 → <b>hopeful</b>
+        <div class="tip">📌 <b>분위기 어휘:</b> playful(장난스러운), warm(따뜻한), sorrowful(슬픈), hopeful(희망찬), gloomy(우울한), mysterious(신비한)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21번 -->
+  <div class="question" data-qnum="21" data-type="mc" data-answer="4" data-points="3.6">
+    <span class="q-num">Q 21</span><span class="q-points">[3.6점]</span>
+    <p class="q-text">위 글의 밑줄 친 ⓐ~ⓔ 중 어법상 <u>틀린</u> 것을 있는 대로 <u>모두</u> 고른 것은?</p>
+    <div class="passage">
+      ⓐ Bob was the person who <b>teaches</b> Bobby how to walk.<br>
+      ⓑ "You always sneeze when the elephant block <b>is appeared</b>."<br>
+      ⓒ "Bob fell ill. He is in a hospital which is far from here."<br>
+      ⓓ He just <b>laid</b> in bed without talking or moving.<br>
+      ⓔ Suddenly, Bob made a small sound <b>like sneezing</b>.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">ⓐ, ⓑ</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">ⓐ, ⓒ</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">ⓑ, ⓓ</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">ⓐ, ⓑ, ⓓ</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">ⓒ, ⓓ, ⓔ</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>④ ⓐ, ⓑ, ⓓ</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        ⓐ "who <b>teaches</b>" → 주절이 was(과거)이므로 시제 일치 → <b>who taught</b> ❌<br>
+        ⓑ "is appeared" → <b>appear는 자동사로 수동태 불가</b> → <b>appears</b> 또는 <b>appeared</b> ❌<br>
+        ⓒ "Bob fell ill. He is in a hospital" → 직접 화법(인용문) 안이라 현재시제 OK ✅<br>
+        ⓓ "<b>laid</b>" → lie(눕다)의 과거형은 <b>lay</b>. <b>laid</b>는 lay(눕히다)의 과거형으로 의미가 다름 → <b>lay</b> ❌<br>
+        ⓔ "sound like sneezing" → like(전치사) + 동명사 = "재채기 같은(소리)" 어법 OK ✅<br><br>
+        <b>→ 틀린 것: ⓐ, ⓑ, ⓓ (3개)</b>
+        <div class="tip">📌 <b>lie vs lay 헷갈리는 동사:</b><br>
+        • <b>lie</b>(눕다, 자동사): lie - lay - lain<br>
+        • <b>lay</b>(눕히다, 타동사): lay - laid - laid<br>
+        • lie(거짓말하다): lie - lied - lied<br><br>
+        💪 <b>정욱이 노트:</b> 이 문제 ⑤로 했는데, ⓒ는 직접화법이라 시제 OK, ⓔ도 like sneezing OK인 거 다시 한 번 체크!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22번 -->
+  <div class="question" data-qnum="22" data-type="mc" data-answer="3" data-points="3.7">
+    <span class="q-num">Q 22</span><span class="q-points">[3.7점]</span>
+    <p class="q-text">다음 문장을 같은 의미의 문장으로 어법상 올바르게 바꾼 것은?</p>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">I don't know who to ask for help today.<br>= I don't know who I should ask for help today.</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">She is unsure when to submit the final report.<br>= She is unsure when I should submit the final report.</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">They are discussing where to hold the team meeting.<br>= They are discussing where they should hold the team meeting.</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">He asked me why he should study English at school every day.<br>= He asked me why to study English at school every day.</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">We are learning how to solve this difficult math problem.<br>= We are learning how we should solved this difficult math problem.</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>③ They are discussing where to hold = where they should hold ✅</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        <b>의문사 + to부정사 = 의문사 + 주어 + should + 동사원형</b>으로 변환 시:<br>
+        ① 주어가 I로 일치 → OK이지만 ask의 목적격은 whom이 정석. 학교 정답은 ③.<br>
+        ② "She is unsure"인데 변환에서 주어가 <b>I</b>로 잘못됨 → she여야 함 ❌<br>
+        ③ 주어 they 일치, should hold(동사원형) → 완벽 ✅<br>
+        ④ "why + to부정사"는 일반적으로 잘 안 쓰임. 의미상도 어색 ❌<br>
+        ⑤ "should <b>solved</b>" → should 뒤엔 <b>동사원형 solve</b> ❌
+      </div>
+    </div>
+  </div>
+
+  <!-- 23번 -->
+  <div class="question" data-qnum="23" data-type="mc" data-answer="5" data-points="3.4">
+    <span class="q-num">Q 23</span><span class="q-points">[3.4점]</span>
+    <p class="q-text">위 글의 핵심 주장을 뒷받침하기 위해 저자가 전제하고 있는 가정으로 가장 적절한 것은?</p>
+    <div class="passage">
+      In his book, Brian Tracy shares a simple idea to manage time: <b>Eat the frog!</b> Here, the 'frog' is the hardest and most important task. You don't want to do it, but you need to. Tracy says, "Eat a live frog in the morning and your day will not get worse." This means that if you finish the hardest and most important task first, the rest of your day will feel easier and less stressful overall.
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">Morning is biologically best for creative work.</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">Balancing pleasant and hard tasks is most efficient.</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">All tasks use the same energy, so order is key.</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">The goal of 'eating the frog' is pure entertainment and fun.</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">Delaying hard tasks causes stress and increases anxiety.</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>⑤ Delaying hard tasks causes stress and increases anxiety.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        본문: "if you finish the hardest task first, the rest of your day will feel easier and <b>less stressful</b>" → 반대로 말하면, <b>어려운 일을 미루면 스트레스가 늘어남</b>을 전제로 함.<br>
+        나머지 보기는 본문에 직접 근거가 없거나, 글의 주장과 맞지 않아요.
+      </div>
+    </div>
+  </div>
+
+  <!-- 24번 -->
+  <div class="question" data-qnum="24" data-type="mc" data-answer="3" data-points="3.5">
+    <span class="q-num">Q 24</span><span class="q-points">[3.5점]</span>
+    <p class="q-text">다음 중 위 글의 빈칸에 들어갈 표현으로 가장 적절한 것은?</p>
+    <div class="passage">
+      By 'eating the frog,' you can save time and feel proud. Look at your tasks, find the hardest one, and do it first. For example, if you need to study for a test or clean your desk, start your day with it. It may not be fun, but it will help you finish your work and have a better day. <b>Try this every morning, and ___________________.</b>
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-circle">1</span><span class="option-text">you will focus only on finding instant pleasure</span></div>
+      <div class="option"><span class="option-circle">2</span><span class="option-text">other people will start to help you with your work</span></div>
+      <div class="option"><span class="option-circle">3</span><span class="option-text">you will soon reach your goals and build a strong habit</span></div>
+      <div class="option"><span class="option-circle">4</span><span class="option-text">you will find that the easiest tasks are most important</span></div>
+      <div class="option"><span class="option-circle">5</span><span class="option-text">you will find it better to save the hardest tasks for the end of the day</span></div>
+    </div>
+    <button class="submit-btn" onclick="checkMC(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">정답: <strong>③ you will soon reach your goals and build a strong habit</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        "Try this every morning" = 매일 아침 어려운 일부터 처리해보면 → 글의 주제와 일관되게 <b>목표 달성과 강한 습관 형성</b>으로 이어진다는 결론.<br>
+        ⑤는 정확히 글의 주장과 <b>반대</b>(어려운 일을 미루기)라 ❌
+      </div>
+    </div>
+  </div>
+
+  <!-- 서답형 1-1 -->
+  <div class="question" data-qnum="25" data-type="sa" data-points="3">
+    <span class="q-num">서답형 1-1</span><span class="q-points">[3점]</span>
+    <p class="q-text">다음 대화문을 읽고 주어진 질문에 대한 답을 괄호 안의 표현을 반드시 사용하여 문맥에 맞게 답하시오. (5단어 이상)</p>
+    <div class="passage">
+      Q: When you imagine having a new friend, what kind of friend do you want to have?<br>
+      A: I want to have a friend ____________________ <b>(who)</b>
+    </div>
+    <div class="saw-answer-section">
+      <div class="saw-label">✏️ 내가 쓴 답</div>
+      <textarea placeholder="who로 시작하는 관계사절을 사용해서 답을 써보세요!"></textarea>
+    </div>
+    <button class="submit-btn" onclick="checkSA(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">모범답안: <strong>I want to have a friend <u>who is kind and always listens to me</u>.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        조건: <b>who</b>를 반드시 사용, 한 답안은 최소 5단어 이상.<br><br>
+        <b>모범답안 예시:</b><br>
+        ▸ I want to have a friend who is kind and honest. (9 단어) ✅<br>
+        ▸ I want to have a friend who can always make me laugh. (11 단어) ✅<br>
+        ▸ I want to have a friend who shares my interests and dreams. (11 단어) ✅<br><br>
+        <b>주의할 점:</b><br>
+        • who 뒤에는 동사가 와야 함 (주격 관계대명사)<br>
+        • 5단어 미만이면 0점 처리 (예: "who is nice"는 미달)<br>
+        • who 빼먹으면 0점
+        <div class="tip">📌 <b>관계대명사 who 구조:</b> 사람 선행사 + who + 동사 ~. <br>예) the boy who plays soccer / a person who can be trusted</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 서답형 1-2 -->
+  <div class="question" data-qnum="26" data-type="sa" data-points="3">
+    <span class="q-num">서답형 1-2</span><span class="q-points">[3점]</span>
+    <p class="q-text">다음 우리말을 괄호 안에 주어진 것을 반드시 사용하여 영작하시오. <b>(to부정사)</b></p>
+    <div class="passage">
+      나는 내 숙제를 언제 끝내야 할지 잘 모르겠다.
+    </div>
+    <div class="saw-answer-section">
+      <div class="saw-label">✏️ 내가 쓴 답</div>
+      <textarea placeholder="의문사 + to부정사 구조로 영작!"></textarea>
+    </div>
+    <button class="submit-btn" onclick="checkSA(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">모범답안: <strong>I don't know <u>when to finish</u> my homework.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        조건: <b>to부정사</b>를 반드시 사용.<br><br>
+        <b>핵심 구조:</b> <code>의문사 + to부정사</code> = "~할지"<br>
+        • when to finish = 언제 끝내야 할지<br>
+        • what to do = 무엇을 해야 할지<br>
+        • where to go = 어디로 가야 할지<br>
+        • how to study = 어떻게 공부해야 할지<br><br>
+        <b>전체 문장 구조:</b><br>
+        I don't know(주절) + when to finish(의문사 to부정사) + my homework(목적어).
+        <div class="tip">📌 <b>의문사 + to부정사 = 의문사 + 주어 + should + 동사원형</b><br>
+        = I don't know when I should finish my homework. (둘 다 같은 의미!)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 서답형 1-3 -->
+  <div class="question" data-qnum="27" data-type="sa" data-points="3">
+    <span class="q-num">서답형 1-3</span><span class="q-points">[3점]</span>
+    <p class="q-text">다음 우리말을 괄호 안에 단어를 반드시 사용하여 서로 의미가 일치하도록 영작하시오. (필요시 형태 변형 가능)</p>
+    <div class="passage">
+      만약 Leo가 피곤함을 느낀다면, 그는 내일 집에 머물 것이다. <b>( if / feel / home )</b>
+    </div>
+    <div class="saw-answer-section">
+      <div class="saw-label">✏️ 내가 쓴 답</div>
+      <textarea placeholder="조건문(If ~) 구조로 영작!"></textarea>
+    </div>
+    <button class="submit-btn" onclick="checkSA(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">모범답안: <strong>If Leo <u>feels</u> tired, he will stay <u>home</u> tomorrow.</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        조건: <b>if / feel / home</b> 세 단어 모두 사용 + 의미 일치 + 5단어 이상.<br><br>
+        <b>핵심 포인트:</b><br>
+        ① <b>If 조건절</b>: If + 주어 + <b>현재시제</b> (미래의 일이지만 현재형!)<br>
+        → "If Leo <b>feels</b>"<br>
+        ② <b>주절</b>: 주어 + <b>will</b> + 동사원형<br>
+        → "he <b>will stay</b>"<br>
+        ③ <b>stay home</b> = 집에 머물다 (home은 부사라 at 불필요. 단, "at home"도 OK)<br><br>
+        <b>가능한 답안:</b><br>
+        ▸ If Leo feels tired, he will stay (at) home tomorrow. ✅<br>
+        ▸ If Leo feels tired tomorrow, he will stay home. ✅
+        <div class="tip">📌 <b>Tip:</b> 조건절(If~)에서는 미래 의미라도 <b>현재시제</b>를 써야 해요. "If he <s>will feel</s>"은 어법 오류!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 서답형 1-4 -->
+  <div class="question" data-qnum="28" data-type="sa" data-points="3">
+    <span class="q-num">서답형 1-4</span><span class="q-points">[3점]</span>
+    <p class="q-text">다음 중 어법상 <u>어색한</u> 문장 하나를 골라 바르게 고쳐 전체 문장을 쓰시오.</p>
+    <div class="passage">
+      ▸ My brother needs bigger shoes to wear.<br>
+      ▸ Do you have any extra pieces of paper to write?<br>
+      ▸ Is there anything to drink in the refrigerator?
+    </div>
+    <div class="saw-answer-section">
+      <div class="saw-label">✏️ 내가 쓴 답 (어색한 문장 전체를 고쳐쓰기)</div>
+      <textarea placeholder="전체 문장을 다시 쓰세요"></textarea>
+    </div>
+    <button class="submit-btn" onclick="checkSA(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">모범답안: <strong>Do you have any extra pieces of paper <u>to write on</u>?</strong></div>
+      <div class="explanation">
+        <strong>💡 해설</strong><br>
+        <b>어색한 문장:</b> "Do you have any extra pieces of paper <s>to write</s>?"<br>
+        → "쓸 종이"라는 뜻이라면 <b>"write on paper"</b>(종이 <b>위에</b> 쓰다)에서 <b>on</b>이 살아남아야 해요!<br>
+        → <b>to write on</b><br><br>
+        나머지 두 문장은 어법상 OK:<br>
+        ▸ shoes <b>to wear</b> ("wear shoes" → 전치사 없음) ✅<br>
+        ▸ anything <b>to drink</b> ("drink anything" → 전치사 없음) ✅
+        <div class="tip">📌 <b>9번 문제와 같은 규칙!</b> 명사를 수식하는 to부정사에서, 원래 동사구의 <b>전치사를 빠뜨리지 마세요</b>.<br>
+        • a chair to sit <b>on</b><br>
+        • a pen to write <b>with</b><br>
+        • a friend to play <b>with</b><br>
+        • paper to write <b>on</b></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 서답형 2 -->
+  <div class="question" data-qnum="29" data-type="sa" data-points="8">
+    <span class="q-num">서답형 2</span><span class="q-points">[8점]</span>
+    <p class="q-text">다음 주어진 &lt;주제&gt;에 대해 아래 &lt;조건&gt;에 맞춰 영어로 글을 작성하시오.</p>
+    <div class="passage">
+      <b>&lt;주제&gt;</b><br>
+      ① 나의 가족구성원을 소개하고, 그중에서 한 명을 골라 그 사람은 누구인지, ② 그 인물의 성격이나 특징은 어떠한지를 쓰고, ③ 나에게 어떤 도움을 주는지에 대해 서술하시오.<br><br>
+      <b>&lt;조건&gt;</b><br>
+      1. 주어진 주제에 대해 ①②③의 내용을 다 포함하여 글을 작성할 것<br>
+      2. 6문장 이상 8문장 이하로만 작성할 것<br>
+      3. 한 문장에는 5단어 이상이 포함될 것<br>
+      4. 한 문장에서 문법이 틀린 개수만큼 단어 개수를 차감함
+    </div>
+    <div class="saw-answer-section">
+      <div class="saw-label">✏️ 내가 쓴 답 (6~8문장)</div>
+      <textarea rows="8" placeholder="가족 구성원을 소개하고, 한 명을 골라서 그 사람의 성격과 너에게 어떤 도움을 주는지 6~8문장으로 써보자!"></textarea>
+    </div>
+    <button class="submit-btn" onclick="checkSA(this)">답 확인</button>
+    <div class="feedback">
+      <div class="result-tag"></div>
+      <div class="answer-line">모범답안 (예시):</div>
+      <div class="explanation">
+        <strong>💡 모범답안</strong><br>
+        <em>
+        I have four members in my family. (6 단어)<br>
+        There are my father, my mother, my older sister, and me. (10 단어)<br>
+        Among them, I want to introduce my older sister Jiyeon. (10 단어)<br>
+        She is very kind, patient, and good at math. (9 단어)<br>
+        She always listens to my worries with a warm smile. (10 단어)<br>
+        Whenever I have trouble with my homework, she helps me happily. (11 단어)<br>
+        Thanks to her support, I can study harder every day. (10 단어)<br>
+        I am really grateful to have such a wonderful sister. (10 단어)
+        </em>
+        <br><br>
+        <strong>💡 글쓰기 체크리스트</strong><br>
+        ✅ ①가족 구성원 소개 → "I have four members..."<br>
+        ✅ ②한 명을 고르고 성격/특징 → "She is very kind, patient..."<br>
+        ✅ ③나에게 어떤 도움을 주는지 → "she helps me happily..."<br>
+        ✅ 6~8문장 → 8문장 ✓<br>
+        ✅ 각 문장 5단어 이상 ✓
+        <div class="tip">📌 <b>채점 기준 요약:</b><br>
+        • ①~③ 모두 포함 + 6~8문장으로 5문장 인정 = <b>7점</b><br>
+        • ①~③ 포함 + 5문장 이하 = 최대 6점<br>
+        • ①~③ 중 2가지만 포함 + 6~8문장 = 최대 4점<br>
+        • 9문장 이상 = 최대 7점 (조건 위반)<br><br>
+        💡 <b>꿀팁:</b> 문장은 <b>짧고 정확하게</b>! 길게 쓰다가 문법 틀리면 단어 수가 깎이니까, 간결한 문장 8개가 안전해요.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-submit">
+    <button class="grade-btn" onclick="gradeAll()">📊 점수 확인하기</button>
+  </div>
+
+  <div class="result-section" id="resultSection">
+    <h2>🎉 채점 결과</h2>
+    <div class="score-circle" id="scoreCircle">0점</div>
+    <div class="stats">
+      <div class="stat-card">
+        <div class="num" id="totalQ">29</div>
+        <div class="label">총 문항</div>
+      </div>
+      <div class="stat-card">
+        <div class="num" id="correctQ">0</div>
+        <div class="label">맞은 문항</div>
+      </div>
+      <div class="stat-card">
+        <div class="num" id="wrongQ">0</div>
+        <div class="label">틀린 문항</div>
+      </div>
+    </div>
+
+    <div class="kakao-section">
+      <h3>📱 카톡으로 보낼 결과</h3>
+      <div class="kakao-text" id="kakaoText">결과 생성 중...</div>
+      <button class="copy-btn" id="copyBtn" onclick="copyKakao()">📋 카톡 메시지 복사하기</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 영핏영어 EngFit · 반정욱 학생 복습 자료
+  </div>
+
+</div>
+
+<script>
+  // 옵션 클릭 처리
+  document.querySelectorAll('.option').forEach(opt => {
+    opt.addEventListener('click', function() {
+      const parent = this.closest('.question');
+      if (parent.dataset.checked === '1') return;
+      parent.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      this.classList.add('selected');
+    });
+  });
+
+  // 객관식 채점
+  function checkMC(btn) {
+    const q = btn.closest('.question');
+    if (q.dataset.checked === '1') return;
+    const selected = q.querySelector('.option.selected');
+    if (!selected) {
+      alert('답을 먼저 선택해주세요!');
+      return;
+    }
+    const options = Array.from(q.querySelectorAll('.option'));
+    const userAns = options.indexOf(selected) + 1;
+    const correctAns = parseInt(q.dataset.answer);
+    const feedback = q.querySelector('.feedback');
+    const tag = feedback.querySelector('.result-tag');
+
+    options.forEach((o, i) => {
+      o.classList.remove('selected');
+      if (i + 1 === correctAns) o.classList.add('correct');
+      else if (i + 1 === userAns && userAns !== correctAns) o.classList.add('wrong');
+    });
+
+    if (userAns === correctAns) {
+      feedback.classList.remove('wrong');
+      feedback.classList.add('correct');
+      tag.innerHTML = '✅ 정답이에요! 잘했어요 정욱! 👏';
+      q.dataset.result = 'correct';
+    } else {
+      feedback.classList.remove('correct');
+      feedback.classList.add('wrong');
+      tag.innerHTML = '❌ 틀렸어요. 해설 꼼꼼히 보고 다시 한 번!';
+      q.dataset.result = 'wrong';
+    }
+    feedback.classList.add('show');
+    q.dataset.checked = '1';
+    q.dataset.userAns = userAns;
+    btn.disabled = true;
+    btn.textContent = '확인 완료';
+    updateProgress();
+  }
+
+  // 서답형 채점 (자기 체크)
+  function checkSA(btn) {
+    const q = btn.closest('.question');
+    if (q.dataset.checked === '1') return;
+    const ta = q.querySelector('textarea');
+    if (!ta.value.trim()) {
+      alert('답을 작성한 후 확인해주세요!');
+      return;
+    }
+    const feedback = q.querySelector('.feedback');
+    const tag = feedback.querySelector('.result-tag');
+    tag.innerHTML = `📝 너의 답을 모범답안과 비교해봐! 아래 자기채점에서 ✅/❌ 골라줘<br>
+      <div class="self-check">
+        <button onclick="markSA(this, 'ok')">✅ 맞은 것 같아!</button>
+        <button onclick="markSA(this, 'no')">❌ 틀린 것 같아</button>
+      </div>`;
+    feedback.classList.add('show');
+    feedback.classList.add('correct');
+    ta.disabled = true;
+    q.dataset.checked = '1';
+    q.dataset.userText = ta.value;
+    btn.disabled = true;
+    btn.textContent = '확인 완료';
+    updateProgress();
+  }
+
+  function markSA(btn, type) {
+    const q = btn.closest('.question');
+    const buttons = btn.parentElement.querySelectorAll('button');
+    buttons.forEach(b => { b.classList.remove('active-ok','active-no'); });
+    if (type === 'ok') {
+      btn.classList.add('active-ok');
+      q.dataset.result = 'correct';
+    } else {
+      btn.classList.add('active-no');
+      q.dataset.result = 'wrong';
+    }
+  }
+
+  function updateProgress() {
+    const total = document.querySelectorAll('.question').length;
+    const done = document.querySelectorAll('.question[data-checked="1"]').length;
+    document.getElementById('progressText').textContent = `${done} / ${total}`;
+    document.getElementById('progressFill').style.width = (done/total*100) + '%';
+  }
+
+  // 최종 채점
+  function gradeAll() {
+    const questions = document.querySelectorAll('.question');
+    let correct = 0, wrong = 0, score = 0, totalPoints = 0;
+    const wrongList = [];
+    const correctList = [];
+
+    questions.forEach(q => {
+      const qnum = q.dataset.qnum;
+      const pts = parseFloat(q.dataset.points);
+      totalPoints += pts;
+      if (q.dataset.result === 'correct') {
+        correct++;
+        score += pts;
+        correctList.push(qnum);
+      } else if (q.dataset.result === 'wrong') {
+        wrong++;
+        wrongList.push(qnum);
+      }
+    });
+
+    // 100점 만점 환산은 그대로 (총점 100점)
+    const finalScore = Math.round(score * 10) / 10;
+
+    document.getElementById('correctQ').textContent = correct;
+    document.getElementById('wrongQ').textContent = wrong;
+    document.getElementById('scoreCircle').textContent = finalScore + '점';
+    document.getElementById('scoreCircle').style.fontSize = finalScore >= 100 ? '32px' : '38px';
+
+    // 격려 메시지
+    let cheer = '';
+    if (finalScore >= 90) cheer = '🏆 완벽! 정말 잘했어 정욱이!';
+    else if (finalScore >= 80) cheer = '🌟 훌륭해! 조금만 더 다듬으면 만점!';
+    else if (finalScore >= 70) cheer = '💪 잘하고 있어! 틀린 부분 다시 보자!';
+    else if (finalScore >= 60) cheer = '📚 계속 도전! 영핏에서 차근차근 올려보자!';
+    else cheer = '🌱 시작이 반! 해설 꼼꼼히 보고 한 번 더 풀어보자!';
+
+    // 카톡 메시지 생성
+    const today = new Date();
+    const dateStr = `${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+    const kakaoMsg =
+`📚 [영핏영어] 반정욱 학생
+중간고사 재도전 결과 (${dateStr})
+
+🎯 점수: ${finalScore}점 / 100점
+✅ 맞은 문항: ${correct}개
+❌ 틀린 문항: ${wrong}개
+📝 총 문항: ${questions.length}개
+
+${wrongList.length > 0 ? '🔍 틀린 문항 번호: ' + wrongList.join(', ') + '번\n' : '🎉 모든 문제 정답!\n'}
+${cheer}
+
+#영핏영어 #EngFit #2학년영어`;
+
+    document.getElementById('kakaoText').textContent = kakaoMsg;
+    const resultSection = document.getElementById('resultSection');
+    resultSection.classList.add('show');
+    resultSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function copyKakao() {
+    const text = document.getElementById('kakaoText').textContent;
+    const btn = document.getElementById('copyBtn');
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        btn.classList.add('copied');
+        btn.textContent = '✅ 복사 완료! 카톡에 붙여넣기 하세요';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.textContent = '📋 카톡 메시지 복사하기';
+        }, 3000);
+      });
+    } else {
+      // 폴백: 텍스트 영역 사용
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      btn.classList.add('copied');
+      btn.textContent = '✅ 복사 완료!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = '📋 카톡 메시지 복사하기';
+      }, 3000);
+    }
+  }
+</script>
+</body>
+</html>
